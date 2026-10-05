@@ -23,6 +23,24 @@ body{
   z-index:-1;
 }
 
+#enter-screen{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  cursor:pointer;
+  transition:.5s;
+}
+
+#enter-screen h1{
+  font-size:32px;
+  letter-spacing:8px;
+  color:white;
+}
+
 header{
   position:fixed;
   top:20px;
@@ -144,4 +162,4 @@ footer{
     grid-template-columns:1fr;
   }
 
-  }
+}
