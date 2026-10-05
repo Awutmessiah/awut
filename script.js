@@ -6,32 +6,71 @@ const lines = [
   "still here."
 ];
 
+/* Typing Text */
 let index = 0;
 
-function updateTyping(){
-  document.getElementById("typing").textContent =
-  lines[index];
+function updateTyping() {
+  const typing = document.getElementById("typing");
+
+  if (!typing) return;
+
+  typing.textContent = lines[index];
 
   index = (index + 1) % lines.length;
 }
 
-setInterval(updateTyping,2500);
+setInterval(updateTyping, 2500);
 updateTyping();
 
-function updateClock(){
-  document.getElementById("clock").textContent =
-  new Date().toLocaleTimeString();
+/* Clock */
+function updateClock() {
+  const clock = document.getElementById("clock");
+
+  if (!clock) return;
+
+  clock.textContent = new Date().toLocaleTimeString();
 }
 
-setInterval(updateClock,1000);
+setInterval(updateClock, 1000);
 updateClock();
 
+/* Visitor Counter */
 const key = "awut_views";
 
-let views =
-Number(localStorage.getItem(key) || 0) + 1;
+let views = Number(localStorage.getItem(key) || 0) + 1;
 
 localStorage.setItem(key, views);
 
-document.getElementById("views").textContent =
-String(views).padStart(6,"0");
+const viewsElement = document.getElementById("views");
+
+if (viewsElement) {
+  viewsElement.textContent =
+    String(views).padStart(6, "0");
+}
+
+/* Music + Enter Screen */
+const enterScreen =
+  document.getElementById("enter-screen");
+
+const music =
+  document.getElementById("bgMusic");
+
+if (enterScreen && music) {
+
+  enterScreen.addEventListener("click", () => {
+
+    music.volume = 0.35;
+
+    music.play().catch(() => {
+      console.log("Music blocked by browser.");
+    });
+
+    enterScreen.style.opacity = "0";
+
+    setTimeout(() => {
+      enterScreen.style.display = "none";
+    }, 500);
+
+  });
+
+}
