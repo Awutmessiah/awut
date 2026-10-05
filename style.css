@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #050505;
+  color: #f4f4f4;
+  font-family: "Courier New", monospace;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.86)),
+    url("assets/avatar.jpg") center / cover no-repeat;
+  filter: grayscale(1) blur(2px);
+  transform: scale(1.04);
+  z-index: -3;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  opacity: .10;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+.card {
+  width: min(680px, 92vw);
+  min-height: 100vh;
+  margin: auto;
+  padding: 28px 0 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #a9a9a9;
+  font-size: 12px;
+  letter-spacing: .5px;
+}
+
+.terminal::after {
+  content: " █";
+  animation: blink 1s steps(1) infinite;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #eee;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(255,255,255,.7);
+}
+
+.profile {
+  text-align: center;
+  margin: auto 0 35px;
+}
+
+.avatar {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #777;
+  filter: grayscale(1);
+  box-shadow: 0 0 35px rgba(0,0,0,.9);
+}
+
+h1 {
+  margin: 20px 0 4px;
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.handle {
+  margin: 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.bio {
+  margin: 18px auto 0;
+  max-width: 420px;
+  color: #aaa;
+  font-size: 13px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 45px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.stats div {
+  min-width: 100px;
+}
+
+.stats strong {
+  display: block;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.stats small {
+  color: #777;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.discord {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 17px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  background: rgba(0,0,0,.42);
+  backdrop-filter: blur(12px);
+  transition: .2s ease;
+}
+
+.discord:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.09);
+  border-color: rgba(255,255,255,.4);
+}
+
+.discord-icon {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #444;
+  border-radius: 9px;
+}
+
+.discord b,
+.discord small {
+  display: block;
+}
+
+.discord b {
+  font-size: 13px;
+}
+
+.discord small {
+  margin-top: 4px;
+  color: #777;
+  font-size: 10px;
+}
+
+.arrow {
+  margin-left: auto;
+  color: #999;
+}
+
+footer {
+  text-align: center;
+  margin-top: 24px;
+  color: #555;
+  font-size: 10px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 480px) {
+  .card { padding-top: 22px; }
+  .profile { margin-top: auto; }
+  .avatar { width: 100px; height: 100px; }
+  h1 { font-size: 25px; }
+}
