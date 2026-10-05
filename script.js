@@ -9,7 +9,7 @@ function updateClock() {
 }
 
 function updateViews() {
-  const key = "xyzawut_views";
+  const key = "awut_views";
   let views = Number(localStorage.getItem(key) || "0") + 1;
   localStorage.setItem(key, views);
   document.getElementById("views").textContent =
