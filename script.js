@@ -1,21 +1,37 @@
-function updateClock() {
-  const now = new Date();
-  const time = now.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
-  });
-  document.getElementById("clock").textContent = time;
+const lines = [
+  "lost somewhere between here and nowhere.",
+  "@dailywithawut",
+  "awutmessiah.",
+  "developer.",
+  "still here."
+];
+
+let index = 0;
+
+function updateTyping(){
+  document.getElementById("typing").textContent =
+  lines[index];
+
+  index = (index + 1) % lines.length;
 }
 
-function updateViews() {
-  const key = "awut_views";
-  let views = Number(localStorage.getItem(key) || "0") + 1;
-  localStorage.setItem(key, views);
-  document.getElementById("views").textContent =
-    String(views).padStart(6, "0");
+setInterval(updateTyping,2500);
+updateTyping();
+
+function updateClock(){
+  document.getElementById("clock").textContent =
+  new Date().toLocaleTimeString();
 }
 
+setInterval(updateClock,1000);
 updateClock();
-setInterval(updateClock, 1000);
-updateViews();
+
+const key = "awut_views";
+
+let views =
+Number(localStorage.getItem(key) || 0) + 1;
+
+localStorage.setItem(key, views);
+
+document.getElementById("views").textContent =
+String(views).padStart(6,"0");
