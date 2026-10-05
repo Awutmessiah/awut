@@ -1,8 +1,8 @@
 const lines = [
   "lost somewhere between here and nowhere.",
-  ".gg/revshit.",
+  ".gg/kupalside.",
   "messiah.",
-  "kupalside.",
+  "revshit.",
   "still here."
 ];
 
