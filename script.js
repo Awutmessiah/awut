@@ -1,55 +1,91 @@
-const enterScreen = document.getElementById("enter-screen");
-const music = document.getElementById("bgMusic");
+document.addEventListener("DOMContentLoaded", () => {
 
-enterScreen.addEventListener("click", () => {
+  const enterScreen = document.getElementById("enter-screen");
+  const music = document.getElementById("bgMusic");
 
-  enterScreen.style.display = "none";
+  if (enterScreen) {
 
-  music.volume = 0.35;
+    enterScreen.addEventListener("click", async () => {
 
-  music.play();
+      enterScreen.style.opacity = "0";
 
-});
+      setTimeout(() => {
+        enterScreen.style.display = "none";
+      }, 500);
 
-/* Typing Animation */
+      if (music) {
+        try {
+          music.volume = 0.35;
+          await music.play();
+        } catch (err) {
+          console.log("Music blocked:", err);
+        }
+      }
 
-const lines = [
-  "lost somewhere between here and nowhere.",
-  ".gg/kupalside",
-  "messiah",
-  "revshit",
-  "still here."
-];
+    });
 
-let current = 0;
+  }
 
-function updateTyping() {
+  const lines = [
+    "lost somewhere between here and nowhere.",
+    ".gg/kupalside",
+    "messiah",
+    "revshit",
+    "still here."
+  ];
 
   const typing = document.getElementById("typing");
 
-  if (!typing) return;
+  let current = 0;
 
-  typing.textContent = lines[current];
+  function updateTyping() {
 
-  current++;
+    if (!typing) return;
 
-  if (current >= lines.length) {
-    current = 0;
+    typing.textContent = lines[current];
+
+    current++;
+
+    if (current >= lines.length) {
+      current = 0;
+    }
+
   }
 
-}
+  updateTyping();
 
-updateTyping();
-
-setInterval(updateTyping, 2500);
-
-/* Clock */
-
-function updateClock() {
+  setInterval(updateTyping, 2500);
 
   const clock = document.getElementById("clock");
 
-  if (!clock) return;
+  function updateClock() {
 
-  clock.textContent =
-    new Date().to
+    if (!clock) return;
+
+    clock.textContent =
+      new Date().toLocaleTimeString();
+
+  }
+
+  updateClock();
+
+  setInterval(updateClock, 1000);
+
+  const viewsElement =
+    document.getElementById("views");
+
+  let views =
+    Number(localStorage.getItem("awut_views") || 0);
+
+  views++;
+
+  localStorage.setItem("awut_views", views);
+
+  if (viewsElement) {
+
+    viewsElement.textContent =
+      String(views).padStart(6, "0");
+
+  }
+
+});
