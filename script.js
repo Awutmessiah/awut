@@ -6,6 +6,11 @@ document.getElementById("enter-screen");
 const music =
 document.getElementById("bgMusic");
 
+const musicToggle =
+document.getElementById("musicToggle");
+
+/* ENTER SCREEN */
+
 if(enterScreen){
 
 enterScreen.addEventListener("click", () => {
@@ -26,22 +31,52 @@ console.log(err);
 
 }
 
+/* MUSIC TOGGLE */
+
+if(musicToggle && music){
+
+musicToggle.addEventListener("click",()=>{
+
+if(music.paused){
+
+music.play();
+
+musicToggle.textContent =
+"🔊 Music ON";
+
+}else{
+
+music.pause();
+
+musicToggle.textContent =
+"🔇 Music OFF";
+
+}
+
+});
+
+}
+
+/* TYPING EFFECT */
+
 const typing =
 document.getElementById("typing");
 
 const texts = [
+
 "lost somewhere between here and nowhere.",
 ".gg/revshit",
 "messiah",
-"BNG?",
+"kupalside",
 "still here."
+
 ];
 
 let current = 0;
 
-setInterval(()=>{
+function updateTyping(){
 
-if(typing){
+if(!typing) return;
 
 typing.textContent =
 texts[current];
@@ -49,12 +84,18 @@ texts[current];
 current++;
 
 if(current >= texts.length){
+
 current = 0;
-}
 
 }
 
-},2500);
+}
+
+updateTyping();
+
+setInterval(updateTyping,2500);
+
+/* CLOCK */
 
 const clock =
 document.getElementById("clock");
@@ -71,7 +112,10 @@ new Date().toLocaleTimeString();
 }
 
 updateClock();
+
 setInterval(updateClock,1000);
+
+/* VISITOR COUNTER */
 
 const views =
 document.getElementById("views");
