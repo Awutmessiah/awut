@@ -13,25 +13,22 @@ height:100vh;
 position:relative;
 }
 
-/* Animated Background */
+/* BACKGROUND IMAGE */
 
 body::before{
 content:"";
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:
 linear-gradient(
-45deg,
-#000000,
-#111111,
-#1a1a1a,
-#000000
-);
-background-size:400% 400%;
-animation:bgmove 15s ease infinite;
+rgba(0,0,0,.55),
+rgba(0,0,0,.80)
+),
+url("background.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+animation:bgZoom 20s ease-in-out infinite;
 z-index:-3;
 }
 
@@ -39,24 +36,24 @@ body::after{
 content:"";
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(10px);
+backdrop-filter:blur(4px);
+background:rgba(0,0,0,.15);
 z-index:-2;
 }
 
-@keyframes bgmove{
+@keyframes bgZoom{
 0%{
-background-position:0% 50%;
+transform:scale(1);
 }
 50%{
-background-position:100% 50%;
+transform:scale(1.08);
 }
 100%{
-background-position:0% 50%;
+transform:scale(1);
 }
 }
 
-/* Particles */
+/* PARTICLES */
 
 .particles{
 position:fixed;
@@ -67,12 +64,12 @@ height:100%;
 background-image:
 radial-gradient(white 1px, transparent 1px);
 background-size:40px 40px;
-opacity:.15;
-animation:float 20s linear infinite;
+opacity:.12;
+animation:floatParticles 20s linear infinite;
 z-index:-1;
 }
 
-@keyframes float{
+@keyframes floatParticles{
 from{
 transform:translateY(0);
 }
@@ -81,7 +78,7 @@ transform:translateY(-300px);
 }
 }
 
-/* Enter Screen */
+/* ENTER SCREEN */
 
 #enter-screen{
 position:fixed;
@@ -102,7 +99,7 @@ font-weight:300;
 letter-spacing:8px;
 }
 
-/* Header */
+/* HEADER */
 
 header{
 position:fixed;
@@ -115,7 +112,7 @@ font-size:12px;
 color:#888;
 }
 
-/* Main */
+/* MAIN */
 
 main{
 height:100vh;
@@ -127,7 +124,7 @@ text-align:center;
 padding:20px;
 }
 
-/* Avatar */
+/* AVATAR */
 
 .avatar{
 width:140px;
@@ -135,12 +132,11 @@ height:140px;
 border-radius:50%;
 object-fit:cover;
 border:2px solid rgba(255,255,255,.2);
-box-shadow:
-0 0 25px rgba(255,255,255,.15);
+box-shadow:0 0 25px rgba(255,255,255,.15);
 margin-bottom:20px;
 }
 
-/* Text */
+/* TEXT */
 
 h1{
 font-size:48px;
@@ -159,7 +155,7 @@ color:#ddd;
 margin-bottom:30px;
 }
 
-/* Stats */
+/* STATS */
 
 .stats{
 display:flex;
@@ -184,7 +180,7 @@ color:#888;
 margin-bottom:5px;
 }
 
-/* Socials */
+/* SOCIALS */
 
 .socials{
 display:flex;
@@ -210,7 +206,7 @@ transform:translateY(-4px);
 background:rgba(255,255,255,.12);
 }
 
-/* Footer */
+/* FOOTER */
 
 footer{
 position:fixed;
@@ -221,7 +217,7 @@ font-size:12px;
 color:#666;
 }
 
-/* Mobile */
+/* MOBILE */
 
 @media(max-width:600px){
 
