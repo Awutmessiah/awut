@@ -6,14 +6,14 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#000;
-color:#fff;
-overflow:hidden;
 height:100vh;
+overflow:hidden;
+color:white;
 position:relative;
+background:#000;
 }
 
-/* BACKGROUND IMAGE */
+/* Background */
 
 body::before{
 content:"";
@@ -36,24 +36,18 @@ body::after{
 content:"";
 position:fixed;
 inset:0;
-backdrop-filter:blur(4px);
 background:rgba(0,0,0,.15);
+backdrop-filter:blur(4px);
 z-index:-2;
 }
 
 @keyframes bgZoom{
-0%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.08);
-}
-100%{
-transform:scale(1);
-}
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
 }
 
-/* PARTICLES */
+/* Particles */
 
 .particles{
 position:fixed;
@@ -70,15 +64,11 @@ z-index:-1;
 }
 
 @keyframes floatParticles{
-from{
-transform:translateY(0);
-}
-to{
-transform:translateY(-300px);
-}
+from{transform:translateY(0);}
+to{transform:translateY(-300px);}
 }
 
-/* ENTER SCREEN */
+/* Enter */
 
 #enter-screen{
 position:fixed;
@@ -89,17 +79,14 @@ justify-content:center;
 align-items:center;
 z-index:9999;
 cursor:pointer;
-user-select:none;
--webkit-user-select:none;
 }
 
 #enter-screen h1{
-font-size:22px;
-font-weight:300;
 letter-spacing:8px;
+font-weight:300;
 }
 
-/* HEADER */
+/* Header */
 
 header{
 position:fixed;
@@ -109,10 +96,10 @@ right:15px;
 display:flex;
 justify-content:space-between;
 font-size:12px;
-color:#888;
+color:#aaa;
 }
 
-/* MAIN */
+/* Main */
 
 main{
 height:100vh;
@@ -124,23 +111,18 @@ text-align:center;
 padding:20px;
 }
 
-/* AVATAR */
-
 .avatar{
 width:140px;
 height:140px;
 border-radius:50%;
 object-fit:cover;
-border:2px solid rgba(255,255,255,.2);
-box-shadow:0 0 25px rgba(255,255,255,.15);
 margin-bottom:20px;
+border:2px solid rgba(255,255,255,.2);
+box-shadow:0 0 30px rgba(255,255,255,.2);
 }
-
-/* TEXT */
 
 h1{
 font-size:48px;
-letter-spacing:4px;
 margin-bottom:5px;
 }
 
@@ -151,27 +133,24 @@ margin-bottom:15px;
 }
 
 #typing{
+margin-bottom:25px;
 color:#ddd;
-margin-bottom:30px;
 }
 
-/* STATS */
+/* Stats */
 
 .stats{
 display:flex;
 gap:15px;
 margin-bottom:25px;
-flex-wrap:wrap;
-justify-content:center;
 }
 
 .box{
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(15px);
-border:1px solid rgba(255,255,255,.08);
 padding:15px;
 border-radius:12px;
-min-width:140px;
+backdrop-filter:blur(10px);
+min-width:130px;
 }
 
 .box small{
@@ -180,33 +159,45 @@ color:#888;
 margin-bottom:5px;
 }
 
-/* SOCIALS */
+/* Socials */
 
 .socials{
 display:flex;
 gap:10px;
 flex-wrap:wrap;
 justify-content:center;
-max-width:500px;
 }
 
 .socials a{
 text-decoration:none;
 color:white;
 padding:12px 18px;
-border-radius:12px;
 background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(15px);
+border-radius:12px;
+backdrop-filter:blur(10px);
 transition:.3s;
 }
 
 .socials a:hover{
-transform:translateY(-4px);
-background:rgba(255,255,255,.12);
+transform:translateY(-3px);
 }
 
-/* FOOTER */
+/* Music */
+
+.music-status{
+margin-top:20px;
+font-size:13px;
+color:#aaa;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:.4;}
+50%{opacity:1;}
+100%{opacity:.4;}
+}
+
+/* Footer */
 
 footer{
 position:fixed;
@@ -215,29 +206,4 @@ width:100%;
 text-align:center;
 font-size:12px;
 color:#666;
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-h1{
-font-size:36px;
-}
-
-.avatar{
-width:120px;
-height:120px;
-}
-
-.socials{
-flex-direction:column;
-width:100%;
-padding:0 20px;
-}
-
-.socials a{
-width:100%;
-}
-
 }
